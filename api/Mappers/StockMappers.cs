@@ -12,7 +12,8 @@ namespace api.Mappers
 {
     public static class StockMappers
     {
-        public static StockDto ToStockDto(this Stock stockModel){
+        public static StockDto ToStockDto(this Stock stockModel)
+        {
             return new StockDto
             {
                 Id = stockModel.Id,
@@ -36,6 +37,18 @@ namespace api.Mappers
                 LastDiv = stockDto.LastDiv,
                 Industry = stockDto.Industry,
                 MarketCap = stockDto.MarketCap
+            };
+        }
+        public static Stock ToStockFromFMP(this FMPStock fmpStock)
+        {
+            return new Stock
+            {
+                Symbol = fmpStock.symbol,
+                CompanyName = fmpStock.companyName,
+                Purchase = (decimal) fmpStock.price,
+                LastDiv = (decimal) fmpStock.lastDiv,
+                Industry = fmpStock.industry,
+                MarketCap = fmpStock.mktCap
             };
         }
     }
